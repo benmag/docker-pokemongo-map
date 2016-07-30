@@ -5,6 +5,9 @@ ENV USERNAME "username"
 ENV PASSWORD "password"
 ENV LOCATION "LAT LON"
 ENV GOOGLE_MAPS_KEY "google-maps-api-key"
+ENV SCAN_DELAY 3
+ENV STEP_LIMIT 10
+ENV NUM_THREADS 1
 
 # Working directory for the application
 WORKDIR /usr/src/app
@@ -23,4 +26,4 @@ RUN apk add --no-cache build-base \
 # Default port the webserver runs on
 EXPOSE 5000
 
-CMD python runserver.py -a ptc -u $USERNAME -p $PASSWORD -l "$LOCATION" -st 10 -k $GOOGLE_MAPS_KEY --host 0.0.0.0
+CMD python runserver.py -a ptc -u $USERNAME -p $PASSWORD -l "$LOCATION" -st $STEP_LIMIT -sd $SCAN_DELAY -t $NUM_THREADS  -k $GOOGLE_MAPS_KEY --host 0.0.0.0 
