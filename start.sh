@@ -7,7 +7,23 @@ echo -e \
 "password: $PASSWORD \n" \
 "location: $LOCATION \n" \
 "gmaps-key: $GOOGLE_MAPS_KEY \n" \
-"host: 0.0.0.0" > config/config.ini
+"db-type: mysql \n" \
+"host: 0.0.0.0 \n" > config/config.ini
+
+if [ "$DB_TYPE" = "mysql" ]; then 
+	echo -e "db-host: $DB_HOST \n" \
+			"db-name: $DB_NAME \n" \
+			"db-user: $DB_USER \n" \
+			"db-pass: $DB_PASS \n" >> config/config.ini
+fi 
+
+if [ -n "$ONLY_SERVER" ]; then
+	echo -e "only-server: $ONLY_SERVER \n " >> config/config.ini
+fi
+
+if [ -n "$NO_SEARCH_CONTROL" ]; then 
+	echo -e "no-search-control: $NO_SEARCH_CONTROL \n " >> config/config.ini
+fi
 
 # Start bot 
-python runserver.py 
+python runserver.py

@@ -5,6 +5,7 @@ ENV USERNAME "username"
 ENV PASSWORD "password"
 ENV LOCATION "LAT LON"
 ENV GOOGLE_MAPS_KEY "google-maps-api-key"
+ENV DB_TYPE "sqlite"
 
 # Working directory for the application
 WORKDIR /usr/src/app
